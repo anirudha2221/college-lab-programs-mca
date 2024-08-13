@@ -1,0 +1,119 @@
+create table my_branch33 (
+branchid  varchar2(10) primary key ,
+branchname varchar2(10),
+hod varchar2(10)
+);
+create table student22 (
+usn varchar2(10) primary key ,
+name varchar2(25),
+address varchar2(33),
+ 
+branchid references  my_branch33 (branchid),
+sem number(10)
+);
+select * from my_branch33;
+drop table student22;
+drop table my_branch33;
+create table author33 (
+authorid number(10) primary key,
+authorname varchar2(20),
+country varchar2(2),
+age number(3)
+);
+create table book22 (
+bookid number(10) primary key ,
+bookname varchar2(20),
+authorid references author33 (authorid),
+publisher varchar2(20),
+branchid references my_branch33(branchid)
+);
+drop table book22;
+create table borrow22 (
+usn references student22 (usn),
+bookid references book22 (bookid),
+borrowed_date date
+);
+select* from MY_BRANCH33;
+select* from STUDENT22;
+select* from AUTHOR33;
+select* from  BOOK22;
+select* from  BORROW22;
+
+insert into my_branch33 values ('mca01','mca dept','dr jhon');
+insert into my_branch33 values ('mba02','mba dept','dr sham');
+insert into my_branch33 values ('mcom03','mcom dept','dr sam');
+insert into my_branch33 values ('msc04','msc phy','dr carl');
+insert into my_branch33 values ('msc05','msc chem','dr jeff');
+insert into my_branch33 values ('msc06','msc maths','dr elon');
+insert into my_branch33 values ('msc07','msc geo','dr sheldon');
+
+insert into STUDENT22 values ('1rf23mc001','amit shah','jp nagar benglaore','mca01','2');
+insert into STUDENT22 values ('1rf23mc002','n modi','jp nagar benglaore','mca01','2');
+insert into STUDENT22 values ('1rf23mc003','r gandhi','jp nagar benglaore','mba02','3');
+insert into STUDENT22 values ('1rf23mc004','ananth ','jp nagar benglaore','mcom03','2');
+insert into STUDENT22 values ('1rf23mc005','dharshan ','jp nagar benglaore','msc04','4');
+insert into STUDENT22 values ('1rf23mc006','kamal  ','jp nagar benglaore','msc05','2');
+insert into STUDENT22 values ('1rf23mc007','hasan ','jp nagar benglaore','msc06','2');
+insert into STUDENT22 values ('1rf23mc008','yash ','jp nagar benglaore','msc07','2');
+insert into STUDENT22 values ('1rf23mc009','jimmy','jp nagar benglaore','mca01','1');
+
+
+insert into AUTHOR33 values (1,'mark manson ','us',3);
+insert into AUTHOR33 values (2,'carl newport ','us',33);
+insert into AUTHOR33 values (3,'jk rowling ','uk',55);
+insert into AUTHOR33 values (4,'cheathan bhagat ','in',44);
+
+insert into BOOK22 values (1,'one arranged murder','4','peguin random house','mca01');
+insert into BOOK22 values (2,'one arranged murder','4','peguin random house','mba02');
+insert into BOOK22 values (3,'half girlfriend','4','peguin random house','mca01');
+insert into BOOK22 values (4,'one arranged murder','4','peguin random house','mcom03');
+insert into BOOK22 values (5,'one arranged murder','4','peguin random house','msc04');
+delete from book22 where bookid='5';
+insert into BOOK22 values (6,'harrypotter1','3','peguin random house','mca01');
+insert into BOOK22 values (7,'harrypotter1','3','peguin random house','msc05');
+insert into BOOK22 values (8,'harrypotter2','3','peguin random house','msc06');
+insert into BOOK22 values (9,'harrypotter2','3','peguin random house','mca01');
+insert into BOOK22 values (10,'harrypotter3','3','peguin random house','mca01');
+insert into BOOK22 values (11,'harrypotter4','3','peguin random house','msc06');
+insert into BOOK22 values (12,'harrypotter4','3','peguin random house','mca01');
+insert into BOOK22 values (13,'harrypotter5','3','peguin random house','mca01');
+insert into BOOK22 values (14,'harrypotter5','3','peguin random house','msc07');
+insert into BOOK22 values (15,'harrypotter6','3','peguin random house','mca01');
+insert into BOOK22 values (16,'harrypotter6','3','peguin random house','mcom03');
+insert into BOOK22 values (17,'harrypotter7','3','peguin random house','mca01');
+insert into BOOK22 values (18,'subtable art ','1','peguin random house','mca01');
+insert into BOOK22 values (19,'deep work  ','2','peguin random house','mca01');
+insert into BOOK22 values (20,'too good   ','2','peguin random house','mca01');
+
+insert into BORROW22 values ('1rf23mc001',1,'22-03-24' );
+delete from borrow22 where bookid=1;
+insert into BORROW22 values ('1rf23mc001',2,'22-03-24' );
+insert into BORROW22 values ('1rf23mc002',1,'21-03-24' );
+insert into BORROW22 values ('1rf23mc002',3,'21-03-24' );
+insert into BORROW22 values ('1rf23mc002',4,'21-03-24' );
+insert into BORROW22 values ('1rf23mc005',5,'20-03-24' );
+insert into BORROW22 values ('1rf23mc005',6,'20-03-24' );
+insert into BORROW22 values ('1rf23mc006',7,'25-03-24' );
+insert into BORROW22 values ('1rf23mc006',8,'20-03-24' );
+insert into BORROW22 values ('1rf23mc007',9,'26-03-24' );
+insert into BORROW22 values ('1rf23mc007',10,'26-03-24' );
+insert into BORROW22 values ('1rf23mc008',11,'26-03-24' );
+insert into BORROW22 values ('1rf23mc008',12,'26-03-24' );
+insert into BORROW22 values ('1rf23mc001',13,'27-03-24' );
+insert into BORROW22 values ('1rf23mc002',14,'28-03-24' );
+insert into BORROW22 values ('1rf23mc003',15,'29-03-24' );
+insert into BORROW22 values ('1rf23mc004',16,'30-03-24' );
+insert into BORROW22 values ('1rf23mc005',17,'31-03-24' );
+insert into BORROW22 values ('1rf23mc006',18,'31-03-24' );
+insert into BORROW22 values ('1rf23mc007',19,'1-04-24' );
+insert into BORROW22 values ('1rf23mc008',20,'2-04-24' );
+
+
+
+select * from student22 where sem=2 and branchid='mca01';
+select*from student22 where usn not in(select usn from borrow22);
+select  bookname from book22 ORDER BY (bookname) desc;
+select  authorid ,count(*) from book22 GROUP BY authorid;
+select * from STUDENT22 where usn in (select usn from BORROW22 GROUP BY usn HAVING count(*)>2);
+select * from student22 where usn in (select usn from borrow22 ,book22 where  borrow22.bookid=book22.bookid GROUP BY usn having count(distinct authorid)>1);
+select * from student22 where usn in(select usn from borrow22 r,book22 b where r.bookid=b.bookid and b.publisher='peguin random house');
